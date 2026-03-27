@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import authRoutes from './routes/auth.routes.js';
+import userRoutes from './routes/user.routes.js';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 
@@ -18,6 +19,7 @@ const authLimiter = rateLimit({
 
 app.use('/auth', authLimiter);
 app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Auth API running' });
